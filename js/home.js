@@ -29,6 +29,13 @@ const createInnerHtml = () => {
     document.querySelector('#display').innerHTML = innerHtml;
 }
 
+const getDeptHtml = (deptList) => {
+    let deptHtml = '';
+    for(const dept of deptList) {
+        deptHtml = `${deptHtml}<div class='dept-label'>${dept}</div>`
+    }
+}
+
 const createEmployeePayrollJSON = () => {
     let empPayrollListLocal = [
         {
