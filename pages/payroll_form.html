@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap" rel="stylesheet">   
     <title>Employee Payroll App</title>
+    <script defer src="../js/payroll_form.js"></script> 
 </head>
 <body>
     <header class="header-content header">
@@ -72,8 +73,8 @@
             </div>
             <div class="row-content">
                 <label class="label text" for="salary">Choose salary:</label>
-                <input class="input" type="range" id="salary" min="300000" max="500000" step="100" value="400000">
-                <output class="salary-output text" for="salary">400000</output>         
+                <input class="input" onclick="selectedValue()" type="range" id="salary" min="300000" max="500000" step="100" value="400000">
+                <output class="salary-output text" for="salary"></output>         
             </div>
             <div class="row-content">
                 <label class="label text" for="startDate">Start Date</label>
