@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap" rel="stylesheet">   
     <title>Employee Payroll App</title>
-    <script defer src="../js/payroll_form.js"></script> 
+    <script defer src="../js/payroll_form.js"></script>
+    <script defer src="../js/EmployeePayroll.js"></script>
 </head>
 <body>
     <header class="header-content header">
@@ -19,12 +20,13 @@
             </div>
         </div>
     </header>
-    <div class="form-content">
-        <form class="form" action="#" onsubmit="save();return false">
+    <div id="formId" class="form-content">
+        <form class="form" action="#" onreset="resetForm()" onsubmit="save()">
             <div class="form-head">Employee Payroll form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
-                <input class="input" type="text" id="name" name="name" placeholder="Your name..." required>         
+                <input class="input" type="text" id="name" name="name" placeholder="Your name..." required>
+                <error-output class="text-error" for="text"></error-output>            
             </div>
             <div class="row-content">
                 <label class="label text" for="profile">Profile Image</label>
@@ -53,7 +55,7 @@
                     <input type="radio" id="male" name="gender" value="male">
                     <label class="text" for="male">Male</label>
                     <input type="radio" id="female" name="gender" value="female">
-                    <label class="text" for="male">Female</label>         
+                    <label class="text" for="female">Female</label>         
                 </div>
             </div>
             <div class="row-content">
@@ -73,8 +75,8 @@
             </div>
             <div class="row-content">
                 <label class="label text" for="salary">Choose salary:</label>
-                <input class="input" onclick="selectedValue()" type="range" id="salary" min="300000" max="500000" step="100" value="400000">
-                <output class="salary-output text" for="salary"></output>         
+                <input class="input" type="range" id="salary" min="300000" max="500000" step="100" value="400000">
+                <output class="salary-output text" for="salary">400000</output>         
             </div>
             <div class="row-content">
                 <label class="label text" for="startDate">Start Date</label>
@@ -137,7 +139,7 @@
             </div>
             <div class="row-content">
                 <label class="label text" for="notes">Notes</label>
-                <textarea class="input" id="notes" name="Notes" placeholder="Add notes.." style="height: 100px;"></textarea>         
+                <textarea class="input" id="notes" name="notes" placeholder="Add notes.." style="height: 100px;"></textarea>         
             </div>
             <div class="buttonParent">
                 <a href="./home.html" class="resetButton button cancelButton">Cancel</a>
