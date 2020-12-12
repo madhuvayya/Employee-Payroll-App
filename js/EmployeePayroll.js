@@ -41,14 +41,20 @@ class EmployeePayrollData {
 
     get startDate() { return this._startDate }
     set startDate(startDate) {
-        this._startDate = startDate;
+        let time_difference = new Date().getTime() - startDate.getTime();
+        var days_difference = time_difference / (1000 * 60 * 60 * 24);
+        if(days_difference < 30 & days_difference >= 1) {
+            this._startDate = startDate;
+            console.log(days_difference);
+        } else if(days_difference < 0) {
+            throw 'Start date should not be future date';        
+        } else
+            throw 'Start date must be with in 30 days';
     } 
 
     toString() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const empDate = !this.startDate ? "undefined" : this.startDate.toLocaleDateString('en-US',options);
-        console.log('after');
-        console.log(empDate);
         return "id=" + this.id + ", name="+ this.name +", gender="+ this.gender + 
                 ", profilePic="+ this.profilePic + ", department="+ this.department + 
                 ", salary=" + this.salary + ", startDate="+ empDate +", note="+ this.note; 
@@ -77,6 +83,34 @@ window.addEventListener('DOMContentLoaded', (event) => {
     salary.addEventListener('input', function() {
         output.textContent = salary.value;
     })
+
+    const option = document.createElement("option");
+    option.setAttribute("value", new Date().getFullYear());
+    const node = document.createTextNode(new Date().getFullYear());
+    option.appendChild(node);
+    document.getElementById("year").appendChild(option);
+
+    const selectedMonth = document.querySelector('#month');
+    selectedMonth.addEventListener('change', (event) => {
+        verifyDate();
+    });
+
+    const selectedDay = document.querySelector('#day');
+    selectedDay.addEventListener('change', (event) => {
+        verifyDate();
+    });
+
+    const verifyDate = () => {
+        const dateError = document.querySelector('.date-error');
+        const selectedDate = "'"+getInputValueById("#year")+"-"+ getInputValueById('#month')+"-"+getInputValueById('#day')+"'";       
+        try {
+            (new EmployeePayrollData()).startDate = new Date(selectedDate);
+            dateError.textContent = "";  
+        } catch (e) {
+            dateError.textContent = e;
+        }
+    }
+
 });
 
 const save = () => {
@@ -101,7 +135,11 @@ const createEmployeePayroll = () => {
     empPayrollData.salary = getInputValueById('#salary');
     empPayrollData.note = getInputValueById('#notes');
     let date = "'"+getInputValueById("#year")+"-"+ getInputValueById('#month')+"-"+getInputValueById('#day')+"'";
-    empPayrollData.startDate = new Date(date);
+    try {
+        empPayrollData.startDate = new Date(date);
+    } catch (error) {
+        setTextValue('.date-error',error);
+    } 
     alert(empPayrollData.toString());
     return empPayrollData;    
 }
@@ -118,11 +156,9 @@ const getSelectedValues = (propertyValue) => {
 }
 
 const getInputValueById = (id) => {
-    let value = document.querySelector(id).value;
-    return value;
+    return document.querySelector(id).value;
 }   
 
 const getInputElementValue = ( ) => {
-    let value = document.getElementById(id).value;
-    return value;
+    return document.getElementById(id).value;
 }
