@@ -123,6 +123,7 @@ const save = () => {
 
 const createEmployeePayroll = () => {
     let empPayrollData = new EmployeePayrollData();
+    empPayrollData.id = getElementId();
     try {
         empPayrollData.name = getInputValueById('#name'); 
     } catch (error) {
@@ -134,7 +135,8 @@ const createEmployeePayroll = () => {
     empPayrollData.department = getSelectedValues('[name=department]');
     empPayrollData.salary = getInputValueById('#salary');
     empPayrollData.note = getInputValueById('#notes');
-    let date = "'"+getInputValueById("#year")+"-"+ getInputValueById('#month')+"-"+getInputValueById('#day')+"'";
+    let month = parseInt(getInputValueById('#month')) + 1;
+    let date = "'"+getInputValueById("#year")+"-"+ month +"-"+getInputValueById('#day')+"'";
     try {
         empPayrollData.startDate = new Date(date);
     } catch (error) {
@@ -142,6 +144,21 @@ const createEmployeePayroll = () => {
     } 
     alert(empPayrollData.toString());
     return empPayrollData;    
+}
+
+const getEmployeePayrollDataFromStorage = () => {
+    return localStorage.getItem('EmployeePayrollList') ? 
+                JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
+
+const getElementId = () => {
+    let empPayrollList = getEmployeePayrollDataFromStorage();
+    if (empPayrollList == 0) 
+        return 1;
+    for (let count = 2; ; count++) {
+        if(!empPayrollList.find(empData._id == count))
+            return count;        
+    }
 }
 
 const getSelectedValues = (propertyValue) => {
