@@ -45,7 +45,6 @@ class EmployeePayrollData {
         var days_difference = time_difference / (1000 * 60 * 60 * 24);
         if(days_difference < 30 & days_difference >= 1) {
             this._startDate = startDate;
-            console.log(days_difference);
         } else if(days_difference < 0) {
             throw 'Start date should not be future date';        
         } else
@@ -116,6 +115,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 const save = () => {
     try {
         let empPayrollData = createEmployeePayroll();
+        createAndUpdateStorage(empPayrollData);
     } catch (error) {
         return;
     }
@@ -161,4 +161,15 @@ const getInputValueById = (id) => {
 
 const getInputElementValue = ( ) => {
     return document.getElementById(id).value;
+}
+
+const createAndUpdateStorage = (empPayrollData) => {
+    let empPayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if (empPayrollList != undefined ) {
+        empPayrollList.push(empPayrollData);
+    } else {
+        empPayrollList = [empPayrollData];
+    }
+    // alert(empPayrollList.toString());
+    localStorage.setItem("EmployeePayrollList",JSON.stringify(empPayrollList));
 }
