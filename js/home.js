@@ -34,7 +34,7 @@ const createInnerHtml = () => {
                 <img name="${empPayrollData._id}" title="Update" onclick="update(this)" alt="edit" src="../assets/icons/create-black-18dp.svg">                    
             </td>
         </tr>
-    `;
+        `;
     }
     document.querySelector('#display').innerHTML = innerHtml;
 }

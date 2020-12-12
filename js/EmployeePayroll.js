@@ -156,7 +156,7 @@ const getElementId = () => {
     if (empPayrollList == 0) 
         return 1;
     for (let count = 2; ; count++) {
-        if(!empPayrollList.find(empData._id == count))
+        if(!empPayrollList.find(empData => empData._id == count))
             return count;        
     }
 }
