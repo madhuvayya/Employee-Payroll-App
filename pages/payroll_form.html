@@ -23,7 +23,7 @@
         </div>
     </header>
     <div id="formId" class="form-content">
-        <form class="form" action="#" onreset="resetForm()" onsubmit="save()">
+        <form class="form" action="#" onreset="resetForm()" onsubmit="save(event)">
             <div class="form-head">Employee Payroll form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
@@ -82,7 +82,7 @@
             </div>
             <div class="row-content">
                 <label class="label text" for="startDate">Start Date</label>
-                <div>
+                <div id="date">
                     <select id="day" name="Day">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -117,19 +117,19 @@
                         <option value="31">31</option>                        
                     </select>
                     <select id="month" name="Month">
-                        <option value="1">January</option>
-                        <option value="2">Febuary</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
+                        <option value="Jan">January</option>
+                        <option value="Feb">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="Aug">August</option>
+                        <option value="Sep">September</option>
+                        <option value="Oct">October</option>
+                        <option value="Nov">November</option>
+                        <option value="Dec">December</option>
+                      </select>
                     <select id="year" name="Year">
                         <!-- <option value="2019">2019</option> -->
                     </select>
