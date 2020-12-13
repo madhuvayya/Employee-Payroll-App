@@ -41,14 +41,14 @@ class EmployeePayrollData {
 
     get startDate() { return this._startDate }
     set startDate(startDate) {
-        let time_difference = new Date().getTime() - startDate.getTime();
-        var days_difference = time_difference / (1000 * 60 * 60 * 24);
-        if(days_difference < 30 & days_difference >= 1) {
-            this._startDate = startDate;
-        } else if(days_difference < 0) {
-            throw 'Start date should not be future date';        
-        } else
-            throw 'Start date must be with in 30 days';
+        if (startDate > new Date()) {
+            throw 'start Date is a future date!';
+        }
+        let now =new Date();
+        var diff=Math.abs(now.getTime()-startDate.getTime());
+        if(diff/(1000*60*60*24)>30)
+            throw 'Start Date is beyond 30 days!';
+        this._startDate=startDate+1;
     } 
 
     toString() {
