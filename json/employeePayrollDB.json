@@ -5,7 +5,7 @@
       "_name": "Mark",
       "_gender": "male",
       "_department": [
-        "Engineering",
+        "Engineer",
         "Finance"
       ],
       "_salary": "500000",
@@ -32,10 +32,23 @@
         "Engineer"
       ],
       "_salary": "400000",
-      "_startDate": "29 Oct 2019",
-      "_note": "",
-      "_profilePic": "../assets/profile-images/Ellipse -1.png",
+      "_startDate": "18 Dec 2020",
+      "_note": "Trainee...",
+      "_profilePic": "../assets/profile-images/Ellipse -8.png",
       "id": 3
+    },
+    {
+      "_name": "Tarun",
+      "_profilePic": "../assets/profile-images/Ellipse -3.png",
+      "_gender": "male",
+      "_department": [
+        "Engineer",
+        "Others"
+      ],
+      "_salary": "450200",
+      "_note": "",
+      "_startDate": "1 Dec 2019",
+      "id": 4
     }
   ]
 }
