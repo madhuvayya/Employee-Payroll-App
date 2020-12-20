@@ -36,19 +36,6 @@
       "_note": "Trainee...",
       "_profilePic": "../assets/profile-images/Ellipse -8.png",
       "id": 3
-    },
-    {
-      "_name": "Tarun",
-      "_profilePic": "../assets/profile-images/Ellipse -3.png",
-      "_gender": "male",
-      "_department": [
-        "Engineer",
-        "Others"
-      ],
-      "_salary": "450200",
-      "_note": "",
-      "_startDate": "1 Dec 2019",
-      "id": 4
     }
   ]
 }
