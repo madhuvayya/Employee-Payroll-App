@@ -1,4 +1,4 @@
-function makePromiseCall(methodType, url, async = true, data = null) {
+function makeServiceCall(methodType, url, async = true, data = null) {
     return new Promise(function(resolve, reject) {
         let xhr  = new XMLHttpRequest();
         xhr.onload = function() {
