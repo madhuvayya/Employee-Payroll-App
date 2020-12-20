@@ -26,13 +26,13 @@
       "_profilePic": "../assets/profile-images/Ellipse -1.png"
     },
     {
-      "_name": "Amarpa Shashanka Keerthi Kumar",
-      "_gender": "female",
+      "_name": "Madhu",
+      "_gender": "male",
       "_department": [
-        "Sales"
+        "Engineer"
       ],
       "_salary": "400000",
-      "_startDate": "29 Oct 2019",
+      "_StartDate": "29 Oct 2019",
       "_note": "",
       "_profilePic": "../assets/profile-images/Ellipse -1.png",
       "id": 3

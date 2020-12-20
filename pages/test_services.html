@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Ajax Services and Promise</title>
+    <style>
+        .body { margin: auto; }
+        div {
+            border: 1px solid black;
+            background-color: lightblue;
+            padding: 50px;
+            width: 80%;
+            font-size: xx-large;
+            margin-top: 15px;
+        }
+    </style>
+    <script src="../js/http_services.js"></script>
+</head>
+<body>
+    <h1>The test services Result</h1>
+    <div id="get_services"></div>
+    <div id="delete_services"></div>
+    <div id="post_services"></div>
+    <script>
+        const getElem=document.querySelector('#get_services');
+        const getURL="http://127.0.0.1:3000/EmployeePayrollDB/1";
+        makePromiseCall("GET",getURL,true).then(responseText=>{
+            getElem.textContent="Get User Data: "+responseText;
+        })
+        .catch(error=>{
+            getElem.textContent="GET Error Status: "+JSON.stringify(error);
+        });
+
+        const deleteElem=document.querySelector('#delete_services');
+        const deleteURL="http://127.0.0.1:3000/EmployeePayrollDB/3";
+        makePromiseCall("DELETE",deleteURL,false)
+            .then(responseText=>{
+                deleteElem.textContent="Delete Data: "+responseText;
+            })
+            .catch(error=>{
+                deleteElem.textContent="DELETE Error Status: "+JSON.stringify(error);
+            });
+
+            const postElem=document.querySelector('#post_services');
+            const postURL="http://127.0.0.1:3000/EmployeePayrollDB";
+            const emplData=
+            {
+                _name:"Madhu",
+                _gender:'male',
+                _department:[
+                    'Engineer'
+                ],
+                _salary:'400000',
+                _StartDate:'29 Oct 2019',
+                _note:'',
+                _profilePic:'../assets/profile-images/Ellipse -1.png'
+            };
+            makePromiseCall("POST",postURL,true,emplData)
+                    .then(responseText=>{
+                        postElem.textContent="New User Data: "+responseText;
+                    })
+                    .catch(error=>{
+                        postElem.textContent="POST Error Status: "+JSON.stringify(error);
+                    }); 
+    </script>
+</body>
+</html>
